@@ -11,17 +11,11 @@ In your `/etc/nixos/configuration.nix`, in the imports section add
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      /home/user/nix-libfprint-overlay/nixos/modules/services/security/fprintd.nix/fprintd.nix
     ]
 
   nixpkgs.overlays = [(import /home/user/nix-libfprint-overlay/default.nix)];
-```
-  
-## However, it fails to build. How do I fix it?
 
-```
-$ sudo nixos-rebuild build 
-building Nix...
-building the system configuration...
-error: The option `services.fprintd.package' defined in `/etc/nixos/configuration.nix' does not exist.
-(use '--show-trace' to show detailed location information)
+  services.fprintd.package = pkgs.fprintd-thinkpad;  # https://github.com/NixOS/nixpkgs/pull/61546
+  services.fprintd.enable = true;
 ```
