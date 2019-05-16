@@ -13,7 +13,7 @@ In your `/etc/nixos/configuration.nix`, in the imports section add
       ./hardware-configuration.nix
       /home/user/nix-libfprint-overlay                    <-- this
     ]
-    ```
+```
   
 ## However, it fails to build. How do I fix it?
 
