@@ -17,14 +17,6 @@ in
 
     services.fprintd = {
 
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = ''
-          Whether to enable fprintd daemon and PAM module for fingerprint readers handling.
-        '';
-      };
-
       package = mkOption {
         type        = types.package;
         default     = pkgs.fprintd;
