@@ -11,8 +11,9 @@ In your `/etc/nixos/configuration.nix`, in the imports section add
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      /home/user/nix-libfprint-overlay                    <-- this
     ]
+
+  nixpkgs.overlays = [(import /home/user/nix-libfprint-overlay/default.nix)];
 ```
   
 ## However, it fails to build. How do I fix it?
@@ -20,9 +21,7 @@ In your `/etc/nixos/configuration.nix`, in the imports section add
 ```
 $ sudo nixos-rebuild build 
 building Nix...
-error: value is a function while a set was expected, at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:141:29
-(use '--show-trace' to show detailed location information)
 building the system configuration...
-error: value is a function while a set was expected, at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:141:29
+error: The option `services.fprintd.package' defined in `/etc/nixos/configuration.nix' does not exist.
 (use '--show-trace' to show detailed location information)
 ```
